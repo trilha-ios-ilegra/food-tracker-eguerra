@@ -63,33 +63,17 @@ import UIKit
     
     private func setupButtons(){
         
-        // Load Button Images
-        let bundle = Bundle(for: type(of: self))
-        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
-        let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
-        let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+        let (emptyStar, filledStar, highlightedStar) = loadButtonImages()
+        clearAnyExistingButton()
         
-        // clear any existing buttons
-        for button in ratingButtons {
-            removeArrangedSubview(button)
-            button.removeFromSuperview()
-        }
-        ratingButtons.removeAll()
         
         for index in 0..<starCount {
-            //Create the button
+            
             let button = UIButton()
             
-            // Set the button images
-            button.setImage(emptyStar, for: .normal)
-            button.setImage(filledStar, for: .selected)
-            button.setImage(highlightedStar, for: .highlighted)
-            button.setImage(highlightedStar, for: [.highlighted, .selected])
+            setButtonImages(button: button, emptyStarImage: emptyStar, filledStarImage: filledStar, highlightedStarImage: highlightedStar)
             
-            //Add constraints
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.heightAnchor.constraint(equalToConstant: startSzie.height).isActive = true
-            button.widthAnchor.constraint(equalToConstant: startSzie.width).isActive = true
+            addButtonConstraints(button: button)
             
             //Setup button action
             button.addTarget(self, action: #selector (RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
@@ -106,7 +90,39 @@ import UIKit
 
     }
     
+    private func loadButtonImages() -> (UIImage?, UIImage?, UIImage?){
+        // Load Button Images
+        let bundle = Bundle(for: type(of: self))
+        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+        let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
+        let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+        
+        return (emptyStar, filledStar, highlightedStar)
+    }
+    
+    private func clearAnyExistingButton(){
+        for button in ratingButtons {
+            removeArrangedSubview(button)
+            button.removeFromSuperview()
+        }
+        ratingButtons.removeAll()
+    }
+    
+    private func addButtonConstraints(button: UIButton){
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: startSzie.height).isActive = true
+        button.widthAnchor.constraint(equalToConstant: startSzie.width).isActive = true
+    }
+    
+    private func setButtonImages(button: UIButton, emptyStarImage: UIImage?, filledStarImage: UIImage?, highlightedStarImage: UIImage? ){
+        button.setImage(emptyStarImage, for: .normal)
+        button.setImage(filledStarImage, for: .selected)
+        button.setImage(highlightedStarImage, for: .highlighted)
+        button.setImage(highlightedStarImage, for: [.highlighted, .selected])
+    }
+    
     private func updateButtonSelectionStates() {
+        
         for (index, button) in ratingButtons.enumerated() {
             // If the index of a button is less than the rating, that button should be selected.
             button.isSelected = index < rating

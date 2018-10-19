@@ -123,6 +123,17 @@ import UIKit
     
     private func updateButtonSelectionStates() {
         
+        // Calculate the value string
+        let valueString: String
+        switch (rating) {
+        case 0:
+            valueString = "No rating set."
+        case 1:
+            valueString = "1 star set."
+        default:
+            valueString = "\(rating) stars set."
+        }
+        
         for (index, button) in ratingButtons.enumerated() {
             // If the index of a button is less than the rating, that button should be selected.
             button.isSelected = index < rating
@@ -133,17 +144,6 @@ import UIKit
                 hintString = "Tap to reset the rating to zero."
             } else {
                 hintString = nil
-            }
-            
-            // Calculate the value string
-            let valueString: String
-            switch (rating) {
-            case 0:
-                valueString = "No rating set."
-            case 1:
-                valueString = "1 star set."
-            default:
-                valueString = "\(rating) stars set."
             }
             
             // Assign the hint string and value string

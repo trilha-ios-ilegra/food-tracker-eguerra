@@ -8,6 +8,7 @@
 
 import UIKit
 
+<<<<<<< HEAD
 @IBDesignable class RatingControl: UIStackView {
 
     //MARK: Properties
@@ -30,6 +31,10 @@ import UIKit
         }
     }
     
+=======
+class RatingControl: UIStackView {
+
+>>>>>>> first rating button added
     //MARK: Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +45,7 @@ import UIKit
         setupButtons()
     }
     
+<<<<<<< HEAD
     //MARK: Button Action
     
     @objc func ratingButtonTapped(button: UIButton){
@@ -138,4 +144,22 @@ import UIKit
             button.accessibilityValue = valueString
         }
     }
+=======
+    //MARK: Private methods
+    
+    private func setupButtons(){
+        //Create the button
+        let button = UIButton()
+        button.backgroundColor = UIColor.red
+        
+        //Add constraints
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+        
+        //Add the button as a subview of the stackview
+        addArrangedSubview(button)
+
+    }
+>>>>>>> first rating button added
 }

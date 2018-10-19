@@ -13,18 +13,18 @@ import UIKit
     //MARK: Properties
     private var ratingButtons = [UIButton]()
     
-    var rating = 0{
-        didSet{
+    var rating = 0 {
+        didSet {
             updateButtonSelectionStates()
         }
     }
     
-    @IBInspectable var startSzie: CGSize = CGSize(width: 44.0, height: 44.0){
+    @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
         didSet{
             setupButtons()
         }
     }
-    @IBInspectable var starCount: Int = 5{
+    @IBInspectable var starCount: Int = 5 {
         didSet{
             setupButtons()
         }
@@ -71,9 +71,9 @@ import UIKit
             
             let button = UIButton()
             
-            setButtonImages(button: button, emptyStarImage: emptyStar, filledStarImage: filledStar, highlightedStarImage: highlightedStar)
+            button.setStarImages(emptyStarImage: emptyStar, filledStarImage: filledStar, highlightedStarImage: highlightedStar)
             
-            addButtonConstraints(button: button)
+            button.addStarButtonConstraints(starSize: starSize)
             
             //Setup button action
             button.addTarget(self, action: #selector (RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
@@ -90,7 +90,7 @@ import UIKit
 
     }
     
-    private func loadButtonImages() -> (UIImage?, UIImage?, UIImage?){
+    private func loadButtonImages() -> (UIImage?, UIImage?, UIImage?) {
         // Load Button Images
         let bundle = Bundle(for: type(of: self))
         let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
@@ -100,7 +100,7 @@ import UIKit
         return (emptyStar, filledStar, highlightedStar)
     }
     
-    private func clearAnyExistingButton(){
+    private func clearAnyExistingButton() {
         for button in ratingButtons {
             removeArrangedSubview(button)
             button.removeFromSuperview()
@@ -108,24 +108,11 @@ import UIKit
         ratingButtons.removeAll()
     }
     
-    private func addButtonConstraints(button: UIButton){
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: startSzie.height).isActive = true
-        button.widthAnchor.constraint(equalToConstant: startSzie.width).isActive = true
-    }
-    
-    private func setButtonImages(button: UIButton, emptyStarImage: UIImage?, filledStarImage: UIImage?, highlightedStarImage: UIImage? ){
-        button.setImage(emptyStarImage, for: .normal)
-        button.setImage(filledStarImage, for: .selected)
-        button.setImage(highlightedStarImage, for: .highlighted)
-        button.setImage(highlightedStarImage, for: [.highlighted, .selected])
-    }
-    
     private func updateButtonSelectionStates() {
         
         // Calculate the value string
         let valueString: String
-        switch (rating) {
+        switch rating {
         case 0:
             valueString = "No rating set."
         case 1:

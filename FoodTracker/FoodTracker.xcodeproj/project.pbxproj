@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1255C094217A3B4B00518B36 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255C093217A3B4B00518B36 /* RatingControl.swift */; };
 		1255C098217A76A700518B36 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255C097217A76A700518B36 /* UIButtonExtensions.swift */; };
+		1255C09A217E3A9B00518B36 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1255C099217E3A9B00518B36 /* Meal.swift */; };
 		128C957D2177B5E000087533 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C957C2177B5E000087533 /* AppDelegate.swift */; };
 		128C957F2177B5E000087533 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C957E2177B5E000087533 /* ViewController.swift */; };
 		128C95822177B5E000087533 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 128C95802177B5E000087533 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		1255C093217A3B4B00518B36 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		1255C097217A76A700518B36 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		1255C099217E3A9B00518B36 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		128C95792177B5E000087533 /* FoodTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		128C957C2177B5E000087533 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		128C957E2177B5E000087533 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				128C957C2177B5E000087533 /* AppDelegate.swift */,
 				128C957E2177B5E000087533 /* ViewController.swift */,
+				1255C099217E3A9B00518B36 /* Meal.swift */,
 				1255C093217A3B4B00518B36 /* RatingControl.swift */,
 				1255C097217A76A700518B36 /* UIButtonExtensions.swift */,
 				128C95802177B5E000087533 /* Main.storyboard */,
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1255C09A217E3A9B00518B36 /* Meal.swift in Sources */,
 				128C957F2177B5E000087533 /* ViewController.swift in Sources */,
 				1255C098217A76A700518B36 /* UIButtonExtensions.swift in Sources */,
 				1255C094217A3B4B00518B36 /* RatingControl.swift in Sources */,

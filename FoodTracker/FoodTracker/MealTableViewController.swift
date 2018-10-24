@@ -87,20 +87,7 @@ class MealTableViewController: UITableViewController {
             os_log("Adding a new meal.", log: OSLog.default, type: .debug)
             
         case "ShowDetail":
-            guard let mealDetailViewController = segue.destination as? MealViewController else {
-                fatalError("Unexpected destination: \(segue.destination)")
-            }
-            
-            guard let selectedMealCell = sender as? MealTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
-            }
-            
-            guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
-                fatalError("The selected cell is not being displayed by the table")
-            }
-            
-            let selectedMeal = meals[indexPath.row]
-            mealDetailViewController.meal = selectedMeal
+            caseShowDetail(for: segue, sender: sender)
             
         default:
             fatalError("Unexpected Segue Identifier; \(segue.identifier)")
@@ -149,6 +136,24 @@ class MealTableViewController: UITableViewController {
         
         meals += [meal1, meal2, meal3]
         
+    }
+    
+    private func caseShowDetail(for segue: UIStoryboardSegue, sender: Any?){
+        
+        guard let mealDetailViewController = segue.destination as? MealViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        
+        guard let selectedMealCell = sender as? MealTableViewCell else {
+            fatalError("Unexpected sender: \(sender)")
+        }
+        
+        guard let indexPath = tableView.indexPath(for: selectedMealCell) else {
+            fatalError("The selected cell is not being displayed by the table")
+        }
+        
+        let selectedMeal = meals[indexPath.row]
+        mealDetailViewController.meal = selectedMeal
     }
     
 
